@@ -1,8 +1,8 @@
 from database.db import db
 from flask import Blueprint, request
 from utils.decorators import validate_json
-from utils.http import ok, created, no_content, not_found
-from database.helper import get_ads, create_ad, update_ad, delete_ad, get_ad_by_id
+from utils.http import ok,not_found
+from database.helper import get_ads, get_ad_by_id
 from utils.scrapper_utils import OlxScraper
 
 ads_blueprint = Blueprint('ads_blueprint', __name__)
@@ -13,12 +13,8 @@ ads_blueprint = Blueprint('ads_blueprint', __name__)
 def ads():
     if request.method == 'GET':
         ads = get_ads(request)
+        print("new", ads)
         return ok(ads)
-
-    if request.method == 'POST':
-        body = request.get_json()
-        ad = create_ad(body)
-        return created(ad)
 
 
 @ads_blueprint.route('/ads/<int:id>/', methods=['GET', 'PUT', 'DELETE'])
@@ -30,15 +26,6 @@ def ad(id):
 
     if request.method == 'GET':
         return ok(ad_exists)
-
-    if request.method == 'PUT':
-        body = request.get_json()
-        update_ad(ad_exists, body)
-        return no_content()
-
-    if request.method == 'DELETE':
-        delete_ad(ad_exists)
-        return no_content()
 
 
 @ads_blueprint.route('/scrape/', methods=['POST'])
