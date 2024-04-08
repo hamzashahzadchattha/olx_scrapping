@@ -3,18 +3,22 @@ from typing import List, Union
 from models.models import Ad
 from flask import Response, jsonify
 from werkzeug.wrappers import Response as ResponseType
+from typing import Iterable
 
-
-def ok(resource: Union[db.Model, List[db.Model]]) -> ResponseType:
+def ok(resource: Union[db.Model, Iterable[db.Model]]) -> ResponseType:
     """
-    Helper function that returns an http status code 200 and the
-    serialized model.
+    Helper function that returns an HTTP status code 200 and the
+    serialized model(s) using the `serialize` method.
 
-    @param resource: Model or a list of models to be serialized
+    Args:
+        resource (Union[db.Model, Iterable[db.Model]]): A single model instance or an iterable of model instances.
+
+    Returns:
+        ResponseType: A Flask response object with the serialized data.
     """
-
-    if isinstance(resource, Ad):
+    if isinstance(resource, db.Model):
         return jsonify(resource.serialize())
+
     return jsonify([res.serialize() for res in resource])
 
 
