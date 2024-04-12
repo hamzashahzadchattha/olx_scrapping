@@ -7,7 +7,6 @@
 - [FlaskSQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 - [CORS](https://flask-cors.readthedocs.io/en/latest/)
 - [PostgreSQL](https://www.postgresql.org/)
-- [Fetch](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch)
 - [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
 ## Dependencies
