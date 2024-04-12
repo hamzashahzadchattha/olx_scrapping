@@ -100,13 +100,6 @@ python manage.py runserver
 
 The server will be running on `http://127.0.0.1:5000/`
 
-### Frontend
-
-You can just open the index.html file in the browser or you can run:
-
-```
-python -m http.server 5500
-```
 
 ## API Endpoints
 
