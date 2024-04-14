@@ -1,5 +1,7 @@
 from utils.errors import BadRequestException
 
+## will use for put and post requests in future
+
 def validate_create_body(body: dict) -> None:
     _validate_presence_of_fields(body, ['title', 'price', 'location', 'ad_posted_at', 'ad_url', 'kilometer_driven'])
     _validate_data_types(body)
