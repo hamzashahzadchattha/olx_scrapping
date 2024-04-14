@@ -17,8 +17,8 @@ def ads():
         return ok(ads)
 
 
-@ads_blueprint.route('/ads/<int:id>/', methods=['GET', 'PUT', 'DELETE'])
-@validate_json(ignore_methods=['GET', 'DELETE'])
+@ads_blueprint.route('/ads/<int:id>/', methods=['GET'])
+@validate_json(ignore_methods=['GET'])
 def ad(id):
     ad_exists = get_ad_by_id(id)
     if ad_exists is None:
